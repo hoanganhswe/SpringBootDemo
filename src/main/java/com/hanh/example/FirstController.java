@@ -1,9 +1,7 @@
 package com.hanh.example;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class FirstController {
@@ -13,9 +11,13 @@ public class FirstController {
         return "this is my first controller";
     }
 
-    @GetMapping("/hello-2")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public String sayHello2() {
-        return "this is my first controller 2";
+    @PostMapping("/post")
+    public String firstPost(@RequestBody String mess) {
+        return "first post " + mess;
+    }
+
+    @PostMapping("/post-order")
+    public String PostOrder(@RequestBody Order order) {
+        return "first post order: " + order;
     }
 }
